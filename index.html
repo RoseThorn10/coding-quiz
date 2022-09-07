@@ -8,21 +8,31 @@
     <title>Coding Quiz</title>
 </head>
 <body>
-    <div class="start-screen">
-        <h1>Coding Quiz: Are you up to the challenge?</h1>
+    <header>
+        <h1>Coding Quiz</h1>
+        <a href="./highscores.html">See High Scores</a>
+    </header>
+    <div id="start-screen">
+        <h2>Are you up to the challenge?</h2>
         <p>Answer as many questions as you can before time runs out. But be careful, you'll lose time for a wrong answer!</p>
         <h2>Good Luck!!</h2>
-        <button id="start" class="start-screen"></button>
+        <button id="start" class="start-screen">Start</button>
     </div>
-    <div class="quiz-screen">
+    <div id="quiz-screen">
+        <div id="counter"></div>
+        <div id="question-area">
+            <h2 id="question"></h2>
+            <p id="ans1" class="ans"></p>
+            <p id="ans2" class="ans"></p>
+            <p id="ans3" class="ans"></p>
+        </div>
+
+    </div>
+    <div id="game-over">
 
 
     </div>
-    <div class="game-over">
-
-
-    </div>
-    <script src="./assets/javascript/script.js"></script>
     <script src="./assets/javascript/questions.js"></script>
+    <script src="./assets/javascript/script.js"></script>
 </body>
 </html>
