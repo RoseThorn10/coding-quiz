@@ -5,7 +5,8 @@ var numAnswers = 3;
 var score = 0;
 var counter = 30;
 var questionNum = 0;
-
+var submitBtn = document.getElementById("submit");
+submitBtn.addEventListener("click", saveHighScore);
 
 var ansclass = document.getElementsByClassName("ans");
 
@@ -15,6 +16,8 @@ var ansclicked = function(e) {
        // alert('Correct!');
         score+=5;
         document.querySelector(".message").textContent = "Correct!"
+        // document.getElementById("question-area").style.backgroundColor = "green";
+        // document.getElementById("question-area").setAttribute("style", "background-color=green");
     } else {
         counter -= 5;
         //alert('Incorrect');
@@ -26,6 +29,7 @@ var ansclicked = function(e) {
         setQuestion(questionNum);
     } else {
         // Do game over man!
+        gameOver();
     }
     console.log(score);
 }
@@ -81,6 +85,27 @@ function gameOver() {
     document.getElementById("quiz-screen").style.display = "none";
     document.getElementById("game-over").style.display = "block";
     // show total score
+    var total = document.getElementsByTagName("h3").textContent = score;
+    var scoreSpan = document.getElementById("total-score");
+    //scoreSpan.appendChild(total);
+    scoreSpan.textContent = score
     // enter initials
     // save both to local storage
+   
+
+    // var userInitials = saveScore.
+    // link to high scores page
+}
+function saveHighScore() {
+    var userInitials = document.getElementById("initials").value;
+    if (userInitials !== "") {
+        var highScores = JSON.parse(localStorage.getItem("highScores") || []);
+        var newHighScore = {
+            score: score,
+            initials: userInitials
+        }
+        highScores.push(newHighScore);
+        localStorage.setItem("highScores", JSON.stringify(newHighScore));
+        window.location.href = "highscores.html";
+    }
 }
