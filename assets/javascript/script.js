@@ -9,6 +9,7 @@ var questionNum = 0;
 
 var ansclass = document.getElementsByClassName("ans");
 
+
 var ansclicked = function(e) {
     if (choose(e)) {
        // alert('Correct!');

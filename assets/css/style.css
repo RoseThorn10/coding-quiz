@@ -1,0 +1,18 @@
+header {
+    display: flex;
+    background-color: beige;
+    justify-content: space-between;
+}
+
+header a {
+    font-size: 20px;
+    margin-top: 25px;
+    text-decoration: none;
+    color: black;
+}
+
+header a:hover {
+    /* font-size: 25px; */
+    background-color: black;
+    color: beige;
+}
