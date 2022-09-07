@@ -13,10 +13,12 @@ var ansclass = document.getElementsByClassName("ans");
 var ansclicked = function(e) {
     if (choose(e)) {
        // alert('Correct!');
-        score+=1;
+        score+=5;
+        document.querySelector(".message").textContent = "Correct!"
     } else {
         counter -= 5;
         //alert('Incorrect');
+        document.querySelector(".message").textContent = "Incorrect"
     }
 
     questionNum+=1;
@@ -25,6 +27,7 @@ var ansclicked = function(e) {
     } else {
         // Do game over man!
     }
+    console.log(score);
 }
 
 for (i = 0; i < ansclass.length; i++) {
@@ -37,6 +40,7 @@ startBtn.addEventListener("click", startQuiz);
 
 function startQuiz() {
     document.getElementById("start-screen").style.display = "none";
+
     
     var timer = setInterval    
     (function() {
@@ -75,4 +79,8 @@ function choose(e) {
 
 function gameOver() {
     document.getElementById("quiz-screen").style.display = "none";
+    document.getElementById("game-over").style.display = "block";
+    // show total score
+    // enter initials
+    // save both to local storage
 }

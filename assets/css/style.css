@@ -16,6 +16,15 @@ header a:hover {
     color: beige;
 }
 
+#game-over {
+    display: none;
+}
+
+/* .ans {
+    display: flex;
+    justify-content: space-evenly;
+} */
+
 .ans:hover {
     background-color: black;
     color: white;
