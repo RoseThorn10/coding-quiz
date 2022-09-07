@@ -1,7 +1,7 @@
 header {
     display: flex;
     background-color: beige;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 header a {
@@ -12,7 +12,12 @@ header a {
 }
 
 header a:hover {
-    /* font-size: 25px; */
     background-color: black;
     color: beige;
+}
+
+.ans:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
 }

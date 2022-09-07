@@ -45,6 +45,7 @@ function startQuiz() {
         if (counter <= 0) {
             clearInterval(timer);
             // do game over
+            gameOver();
         }
     }, 1000);
 
@@ -70,4 +71,8 @@ function choose(e) {
     var answer = questions[questionNum].answer;
     return (answer == e.target.textContent);
     
+}
+
+function gameOver() {
+    document.getElementById("quiz-screen").style.display = "none";
 }
