@@ -20,13 +20,23 @@ header a:hover {
     display: none;
 }
 
-/* .ans {
-    display: flex;
-    justify-content: space-evenly;
-} */
-
 .ans:hover {
     background-color: black;
     color: white;
     cursor: pointer;
+}
+
+.message {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.good-job {
+    background-color: beige;
+    text-align: center;
+}
+
+#scores {
+    font-size: 20px;
+    font-weight: bold;
 }

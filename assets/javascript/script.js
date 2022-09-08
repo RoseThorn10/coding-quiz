@@ -16,22 +16,28 @@ var ansclicked = function(e) {
        // alert('Correct!');
         score+=5;
         document.querySelector(".message").textContent = "Correct!"
-        // document.getElementById("question-area").style.backgroundColor = "green";
-        // document.getElementById("question-area").setAttribute("style", "background-color=green");
+        document.getElementById("question-area").style.backgroundColor = "green";
     } else {
         counter -= 5;
         //alert('Incorrect');
         document.querySelector(".message").textContent = "Incorrect"
+        document.getElementById("question-area").style.backgroundColor = "red";
     }
 
-    questionNum+=1;
-    if (questionNum < numQuestions) {
-        setQuestion(questionNum);
-    } else {
-        // Do game over man!
-        gameOver();
-    }
-    console.log(score);
+    var pauseTimer = setInterval
+        (function() {
+            questionNum+=1;
+            if (questionNum < numQuestions) {
+                setQuestion(questionNum);
+                document.getElementById("question-area").style.backgroundColor = "white";
+        
+            } else {
+                // Do game over man!
+                gameOver();
+            }
+            clearInterval(pauseTimer);
+        }, 1000);
+
 }
 
 for (i = 0; i < ansclass.length; i++) {
@@ -87,25 +93,43 @@ function gameOver() {
     // show total score
     var total = document.getElementsByTagName("h3").textContent = score;
     var scoreSpan = document.getElementById("total-score");
-    //scoreSpan.appendChild(total);
     scoreSpan.textContent = score
-    // enter initials
-    // save both to local storage
-   
-
-    // var userInitials = saveScore.
-    // link to high scores page
 }
+
+// save initials and score to local storage
+// link to high scores page
 function saveHighScore() {
     var userInitials = document.getElementById("initials").value;
     if (userInitials !== "") {
-        var highScores = JSON.parse(localStorage.getItem("highScores") || []);
+        console.log(localStorage.getItem("highScores"));
+        var scores = JSON.parse(localStorage.getItem("highScores"));
+        highScores = scores != null ? scores : [];
         var newHighScore = {
             score: score,
             initials: userInitials
         }
         highScores.push(newHighScore);
-        localStorage.setItem("highScores", JSON.stringify(newHighScore));
+        localStorage.setItem("highScores", JSON.stringify(highScores));
         window.location.href = "highscores.html";
+    }
+}
+
+function displayScores() {
+    var scores = JSON.parse(localStorage.getItem("highScores"));
+    var scoreDiv = document.getElementById("scores");
+    if (scores == null) {
+        scoreDiv.textContent = "Be the first to post a High Score!";
+    } else {
+        var scoreHtml = "<p>Initials----------Score</p>";
+        scores.sort(function (a, b) {
+            return b.score - a.score;
+        })
+        for (i = 0; i < scores.length; i++) {
+            var score = scores[i].score;
+            var initials = scores[i].initials;
+
+            scoreHtml += `<p>${initials}------------------${score}`;
+        }
+        scoreDiv.innerHTML = scoreHtml;
     }
 }
